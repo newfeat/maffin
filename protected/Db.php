@@ -22,7 +22,7 @@ class Db
             }
             $ret[]=$obj;
         }
-        return $obj;
+        return $ret;
     }
 
 }
