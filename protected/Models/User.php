@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../Model.php';
+//require __DIR__ . '/../Model.php';
 
 class User
     extends Model
