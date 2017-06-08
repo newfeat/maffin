@@ -9,20 +9,23 @@ class Db
         $this->dbh = new \PDO('mysql:host=localhost;dbname=zemlyanikino','root','');
     }
 
-    public function query($sql, $class)
+    public function query($sql, $params, $class)
     {
         $sth = $this->dbh->prepare($sql);
-        $sth->execute();
-        $data = $sth->fetchAll(PDO::FETCH_ASSOC);
-        $ret = [];
-        foreach ($data as $row) {
-            $obj = new $class;
-            foreach ($row as $key => $val) {
-                $obj->$key = $val;
-            }
-            $ret[]=$obj;
+        $res = $sth->execute($params);
+
+        if (false !== $res) {
+            return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
         }
-        return $ret;
+        return [];
+    }
+
+
+    public function execute($sql,$params = [])
+    {
+        $sth = $this->dbh->prepare($sql);
+        $res = $sth->execute($params);
+        return $res;
     }
 
 }
