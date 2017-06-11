@@ -4,7 +4,7 @@ body {
 
 
 .container {
-    width: 1100px;
+    width: 1000px;
     margin: 0 auto;
 }
 
@@ -40,6 +40,14 @@ p {
     text-align: justify;
     line-height: 1.4;
     color: dimgrey;
+}
+
+input {
+    border: none;
+}
+
+textarea {
+    border: none;
 }
 
 .link {
@@ -97,4 +105,18 @@ p {
 .block3-4 {
     float: left;
     width: 75%;
+}
+
+.button {
+    width: 100%;
+    height: 30px;
+    color: white;
+    background-color: #235588;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: white;
+    background-color: #6395b2;
 }

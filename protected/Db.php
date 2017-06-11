@@ -1,18 +1,26 @@
 <?php
 
+namespace App;
+
 class Db
 {
+    use Singleton;
+
     protected $dbh;
 
     public function __construct()
     {
-        $this->dbh = new \PDO('mysql:host=localhost;dbname=zemlyanikino','root','');
+        $config = new Config();
+        $dsn = 'mysql:host=' . $config->data['db']['host'] . ';dbname=' . $config->data['db']['dbname'];
+        $user = $config->data['db']['user'];
+        $password = $config->data['db']['password'];
+        $this->dbh = new \PDO($dsn, $user, $password);
     }
 
-    public function query($sql, $params, $class)
+    public function query($sql, $data = [], $class = \stdClass::class)
     {
         $sth = $this->dbh->prepare($sql);
-        $res = $sth->execute($params);
+        $res = $sth->execute($data);
 
         if (false !== $res) {
             return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
@@ -20,12 +28,15 @@ class Db
         return [];
     }
 
-
-    public function execute($sql,$params = [])
+    public function execute($sql,$data = [])
     {
         $sth = $this->dbh->prepare($sql);
-        $res = $sth->execute($params);
+        $res = $sth->execute($data);
         return $res;
     }
 
+    public function lastInsertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
 }

@@ -13,7 +13,6 @@
     <div class="block1">
         <div class="container1">
             <?php
-            $data = Product::findAll();
             foreach ($data as $value) { ?>
                 <div>
                     <ul style="font-size: 13px; line-height: 1.7;">

@@ -13,12 +13,10 @@
     <div class="block1">
         <div class="container1">
             <?php
-            require __DIR__ . '/../protected/Db.php';
-            require __DIR__ . '/../protected/Models/Product.php';
+            require __DIR__ . '/../protected/autoload.php';
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $data = Product::findById($id); ?>
-
+                $data = \App\Models\Product::findById($id); ?>
 
                 <table>
                     <tr>

@@ -1,13 +1,19 @@
 <?php
+namespace App\Models;
 
-//require __DIR__ . '/../Model.php';
+use App\Model;
 
 class User
     extends Model
+    implements HasEmail
 {
     protected static $table = 'users';
 
     public $email;
     public $password;
+
+    use HasEmailTrait;
+
+
 
 }
