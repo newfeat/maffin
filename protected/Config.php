@@ -9,7 +9,7 @@ class Config
 
     public function __construct()
     {
-        $this->data = include __DIR__ . '/../public/config.php';
+        $this->data = include __DIR__ . '/configure.php';
     }
 
 }

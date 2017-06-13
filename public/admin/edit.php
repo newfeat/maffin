@@ -12,5 +12,5 @@ $product->describtion = $_POST['describtion'];
 $product->ingredients = $_POST['ingredients'];
 $product->complements = $_POST['complements'];
 $product->save();
-$data = Product::findAll();
-include __DIR__ . '/admin.php';
+
+header('Location: /admin');

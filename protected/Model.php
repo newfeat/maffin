@@ -71,7 +71,11 @@ abstract class Model
 
     public function save()
     {
-        return $this->isNew() ? $this->insert() : $this->update();
+        if ($this->isNew()) {
+            return $this->insert();
+        } else {
+            return $this->update();
+        }
     }
 
 
@@ -79,8 +83,8 @@ abstract class Model
     {
         $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
         $db = Db::instance();
-        $x = [':id' => $this->id];
-        return $db->execute($sql, $x);
+        $arg = [':id' => $this->id];
+        return $db->execute($sql, $arg);
     }
 
 }
