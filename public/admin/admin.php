@@ -50,7 +50,7 @@
                     <th style="width: 50px"><p></p></th>
                 </tr>
                 <?php
-                foreach ($data as $product) { ?>
+                foreach ($this->products as $product) { ?>
                 <form method="post" action="edit.php">
                     <tr valign="top">
                         <td>

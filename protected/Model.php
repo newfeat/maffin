@@ -2,13 +2,20 @@
 
 namespace App;
 
+/**
+ * Class Model
+ * @package App
+ */
 abstract class Model
 
 {
     protected static $table = null;
 
-    public $id;
+    use MagicTrait;
 
+    /**
+     * @return array|bool
+     */
     public static function findAll()
     {
         $sql = 'SELECT * FROM ' . static::$table;
@@ -16,6 +23,10 @@ abstract class Model
         return $db->query($sql, [], static::class);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public static function findById($id)
     {
         $sql = 'SELECT * FROM ' . static::$table. ' WHERE id=:id';
@@ -23,13 +34,15 @@ abstract class Model
         return $db->query($sql, [':id' => $id], static::class)[0];
     }
 
+    /**
+     *
+     */
     public function insert()
     {
-        $data = get_object_vars($this);
         $cols = [];
         $binds = [];
         $vals = [];
-        foreach ($data as $key => $val){
+        foreach ($this->data as $key => $val){
             if ('id' == $key) {
                 continue;
             }
@@ -44,14 +57,15 @@ abstract class Model
         $this->id = $db->lastInsertId();
     }
 
-
+    /**
+     * @return bool
+     */
     public function update()
     {
         $cols = [];
         $vals = [];
-        foreach ($this as $key => $val) {
+        foreach ($this->data as $key => $val) {
             if ('id' !== $key) {
-
                 $cols[] = $key . '=:' . $key;
             }
             $vals[':' . $key] = $val;
@@ -62,13 +76,17 @@ abstract class Model
     }
 
 
-
+    /**
+     * @return bool
+     */
     public function isNew()
     {
         return empty($this->id);
     }
 
-
+    /**
+     * @return bool|void
+     */
     public function save()
     {
         if ($this->isNew()) {
@@ -78,7 +96,9 @@ abstract class Model
         }
     }
 
-
+    /**
+     * @return bool
+     */
     public function delete()
     {
         $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
@@ -86,5 +106,6 @@ abstract class Model
         $arg = [':id' => $this->id];
         return $db->execute($sql, $arg);
     }
+
 
 }

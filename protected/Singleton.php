@@ -2,6 +2,10 @@
 
 namespace App;
 
+/**
+ * Class Singleton
+ * @package App
+ */
 trait Singleton
 {
 

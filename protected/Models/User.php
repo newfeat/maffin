@@ -3,17 +3,27 @@ namespace App\Models;
 
 use App\Model;
 
+/**
+ * @property string $email
+ * @property string $password
+ */
 class User
     extends Model
-    implements HasEmail
 {
     protected static $table = 'users';
 
-    public $email;
-    public $password;
+    protected function validate_email($value)
+    {
+        if (false == strpos($value, '@')){
+            die('Неверный email');
+        }
+    }
 
-    use HasEmailTrait;
+    /**
+     * @deprecated
+     */
+    public function foo()
+    {
 
-
-
+    }
 }
