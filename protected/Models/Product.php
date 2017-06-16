@@ -13,42 +13,6 @@ class Product
     extends Model
 {
     protected static $table = 'products';
-    /**
-     * @var string $id
-     */
-    public $id;
-    /**
-     * @var string $title
-     */
-    public $title;
-    /**
-     * @var string $price
-     */
-    public $price;
-    /**
-     * @var string $describtion
-     */
-    public $describtion;
-    /**
-     * @var string $image
-     */
-    public $image;
-    /**
-     * @var string $ingredients
-     */
-    public $ingredients;
-    /**
-     * @var string $complements
-     */
-    public $complements;
-    /**
-     * @var string $cook_id
-     */
-    public $cook_id;
-    /**
-     * @var string $add_id
-     */
-    public $add_id;
 
     /**
      * @param $key
@@ -63,6 +27,8 @@ class Product
         if ($key === 'add' && isset($this->add)) {
             return Add::findById($this->add_id);
         }
+
+        return $this->data[$key];
     }
 
     /**
@@ -78,5 +44,7 @@ class Product
         if ($key === 'add') {
             return isset($this->add_id);
         }
+
+        return isset($this->data[$key]);
     }
 }
