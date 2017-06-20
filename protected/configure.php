@@ -2,7 +2,7 @@
 return [
     'db' => [
         'host' => 'localhost',
-        'dbname' => 'zemlyanikino',
+        'dbname' => 'maffin',
         'user' => 'root',
         'password' => ''
     ]

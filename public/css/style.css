@@ -1,5 +1,6 @@
 body {
     font-family: "Segoe UI", PT sans, arial;
+    background-color: #fafafa;
 }
 
 
@@ -9,11 +10,17 @@ body {
 }
 
 
-.container1 {
+section {
     width: 90%;
     margin: 0 auto;
 }
 
+article {
+    font-size: 13px;
+    text-align: justify;
+    line-height: 1.4;
+    color: #235588;
+}
 
 h1 {
     font-size: 21px;
@@ -95,6 +102,7 @@ textarea {
 .block1 {
     float: left;
     width: 100%;
+    background-color: white;
 }
 
 .block2-3 {
