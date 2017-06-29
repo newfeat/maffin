@@ -39,6 +39,7 @@ abstract class Model
      */
     public function insert()
     {
+
         $cols = [];
         $binds = [];
         $vals = [];
@@ -51,7 +52,8 @@ abstract class Model
             $vals[':' . $key] = $val;
         }
 
-        $sql = 'INSERT INTO  ' . static::$table . '(' . implode(', ', $cols) . ') VALUES (' . implode(', ', $binds) . ')';
+        $sql = 'INSERT INTO  ' . static::$table . ' (' . implode(', ', $cols) . ') VALUES (' . implode(', ', $binds) . ')';
+
         $db = Db::instance();
         $db->execute($sql, $vals);
         $this->id = $db->lastInsertId();
@@ -89,7 +91,9 @@ abstract class Model
      */
     public function save()
     {
+
         if ($this->isNew()) {
+
             return $this->insert();
         } else {
             return $this->update();
@@ -110,16 +114,10 @@ abstract class Model
 
     public function fill(array $data)
     {
-        $err = new MultiException();
+
         foreach ($data as $key => $val) {
-            try {
+
                 $this->data[$key] = $val;
-            } catch(\Exception $e) {
-                $err->add($e);
-            }
-        }
-        if (!$err->empty()) {
-            throw $err;
         }
         return $this;
     }

@@ -23,8 +23,8 @@
                     <p><textarea name="ingredients" cols="50" rows="3" placeholder="Состав продукта"></textarea></p>
                     <p><textarea name="complements" cols="50" rows="3" placeholder="Возможные дополнения"></textarea></p>
 
-                    <p><input type="text" name="cook" placeholder="Введите изготовителя" size="50"/></p>
-                    <p><input type="text" name="add" placeholder="Введите добавки" size="50"/></p>
+                    <p><input type="text" name="cook_id" placeholder="Введите изготовителя" size="50"/></p>
+                    <p><input type="text" name="add_id" placeholder="Введите добавки" size="50"/></p>
             </div>
             <div class="block2">
 
@@ -77,10 +77,10 @@
                             <p><textarea name="complements" cols="51" rows="2" placeholder="дополнения" style="width: 100px"><?php echo $product->complements; ?></textarea></p>
                         </td>
                         <td>
-                            <p><textarea name="cook" cols="51" rows="2" placeholder="изготовитель" style="width: 100px"><?php echo $product->cook_id; ?></textarea></p>
+                            <p><textarea name="cook_id" cols="51" rows="2" placeholder="изготовитель" style="width: 100px"><?php echo $product->cook_id; ?></textarea></p>
                         </td>
                         <td>
-                            <p><textarea name="add" cols="51" rows="2" placeholder="добавки" style="width: 100px"><?php echo $product->add_id; ?></textarea></p>
+                            <p><textarea name="add_id" cols="51" rows="2" placeholder="добавки" style="width: 100px"><?php echo $product->add_id; ?></textarea></p>
                         </td>
                         <td>
                             <p><input class="button" type="submit" value="&#9998;"></p>
