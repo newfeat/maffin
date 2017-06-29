@@ -20,8 +20,8 @@
         <h2 style="font-weight: lighter">Торты для детей</h2>
         <hr>
         <div class="block4"><a href="/Products"><h3>Торты</h3></a></div>
+        <div class="block4"><a href="/Categories"><h3>Все категории</h3></a></div>
+        <div class="block4"><a href="/News"><h3>Блог</h3></a></div>
         <div class="block4"><a href="/Panel"><h3>Админ-панель</h3></a></div>
-        <div class="block4"><a href="/index.php"><h3>Блог</h3></a></div>
-        <div class="block4"><a href="/index.php"><h3>Контакты</h3></a></div>
     </section>
 </div>
